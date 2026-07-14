@@ -16,13 +16,13 @@ export const getCustomers = (filters = {}) => {
     params.min_charges = parseFloat(filters.min_charges);
   if (filters.max_charges != null && filters.max_charges !== '')
     params.max_charges = parseFloat(filters.max_charges);
-  return api.get('/customers', { params }).then((r) => r.data);
+  return client.get('/customers', { params }).then((r) => r.data);
 };
 
 export const getCustomer = (id) =>
-  api.get(`/customers/${id}`).then((r) => r.data);
+  client.get(`/customers/${id}`).then((r) => r.data);
 
 export const predictCustomer = (data) =>
-  api.post('/predict', data).then((r) => r.data);
+  client.post('/predict', data).then((r) => r.data);
 
 export default client;
