@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:8000' });
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+const client = axios.create({
+  baseURL: API_URL,
+});
+
+//const api = axios.create({ baseURL: 'http://localhost:8000' });
 
 export const getCustomers = (filters = {}) => {
   const params = {};
@@ -18,3 +24,5 @@ export const getCustomer = (id) =>
 
 export const predictCustomer = (data) =>
   api.post('/predict', data).then((r) => r.data);
+
+export default client;

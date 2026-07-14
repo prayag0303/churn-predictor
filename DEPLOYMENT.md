@@ -127,10 +127,14 @@ export default client;
 ### 3.3 Commit Changes
 
 ```bash
-git add .env.local
-git commit -m "Add environment configuration for production"
+# DO NOT commit .env.local - it's in .gitignore
+# Only .env.example should be committed (it's the template)
+git add frontend/.env.example
+git commit -m "Add environment configuration template"
 git push
 ```
+
+**Note**: `.env.local` is in `.gitignore` and should ONLY exist on your local machine and in production/deployment environments (Vercel will use the environment variables set in their dashboard).
 
 ---
 
@@ -154,10 +158,15 @@ In the import dialog:
 
 ### 4.3 Add Environment Variables
 
-In Vercel environment variables section:
-```
-VITE_API_URL = https://churn-predictor-api.onrender.com
-```
+After import, in the Vercel dashboard:
+1. Go to **Settings** → **Environment Variables**
+2. Add a new variable:
+   - **Name**: `VITE_API_URL`
+   - **Value**: `https://churn-predictor-api.onrender.com`
+   - **Environments**: Check `Production`, `Preview`, and `Development`
+3. Click **Save**
+
+**Note**: Do NOT use the `vercel.json` approach for environment variables - set them directly in the Vercel dashboard instead.
 
 ### 4.4 Deploy
 
