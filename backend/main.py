@@ -23,7 +23,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # Local dev
         "http://localhost:3000",  # Alternative local dev
-        "https://*.vercel.app",  # Vercel deployments
+        "https://churn-predictor-004t.onrender.com",  # Vercel deployments
         "https://your-frontend-domain.com",  # Custom domain (update with your domain)
     ],
     allow_credentials=True,
